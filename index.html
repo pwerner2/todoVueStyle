@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Vue Todo</title>
+</head>
+<body>
+    <div class="container">
+        <div id="todoList">
+          <input 
+            v-model="newTodoText"
+            v-on:keyup.enter="addNewTodo"
+            placeholder="What do you need to do?"
+          >
+
+          <ul>
+              <li
+                is="todo-item"
+                v-for="(todo, index) in todos"
+                v-bind:key="todo"
+                v-bind:title="todo"
+                v-on:remove="todos.splice(index,1)"
+              ></li>
+          </ul>
+        </div>
+    </div>
+</body>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="./js/main.js"></script>
+</html>
